@@ -25,6 +25,13 @@ const io = new Server(httpServer, {
 
 socketService.init(io);
 
+console.log(
+  "Current DB URL:",
+  process.env.DATABASE_URL ? "Exists ✅" : "Missing ❌",
+);
+if (process.env.DATABASE_URL) {
+  console.log("URL Starts with:", process.env.DATABASE_URL.substring(0, 15));
+}
 mongoose
   .connect(DB)
   .then(() => console.log("✅ تم الاتصال بقاعدة البيانات بنجاح!"))
