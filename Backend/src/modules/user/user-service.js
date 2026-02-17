@@ -55,6 +55,10 @@ class UserService {
   async getAllUsers(currentUserId) {
     return await User.find({ _id: { $ne: currentUserId } }).select("-password");
   }
+
+  async getUserById(id) {
+    return await User.findById(id);
+  }
 }
 
 module.exports = new UserService();
